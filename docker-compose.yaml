@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+    gamelib:
+        build: 
+            context: .
+            network: app_network
+        image: gamelib
+        ports: 
+        - "5000:5000"
+        container_name: game_library
+        depends_on:
+        - "db"
+    db:
+        build:
+            context: .
+        image: mongo:latest
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: rootpassword
+        ports:
+            - "27017:27017"
+        volumes: 
+            - ./data:/data/db
+
+networks:
+    app_network:
+

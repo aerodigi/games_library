@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="static/style.css">
+        <title>Add a New Game</title>
+    </head>
+    <body>
+        <a href="/">Home</a>
+        <a href="about">About</a>
+        <a href="search_games">Search Games</a>
+        <br>
+        <br>
+        <h1 style="font-size:50px;">Add a New Game</h1>
+            
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    {{message}}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+            <form method="POST" name="gameform">
+                Title: <input type="text" name="title">
+            <br>
+            <br>
+                Release Date: <input type="date" name="release" value="">
+            <br>
+            <br>
+                <label for="platform">Platform: </label>
+                <select name="platform" id="platform">
+                    <option value="PC">PC</option>
+                    <option value="Playstation">PS</option>
+                    <option value="Xbox">Xbox</option>
+                    <option value="Ninento">Nintendo</option>
+                    <option value="Android">Android</option>     
+                </select>
+            <br>
+            <br>
+                Star Rating:
+            0: <input type="radio" id = "0" name="starrating" value = "0">
+            1: <input type="radio" id = "1" name="starrating" value = "1">
+            2: <input type="radio" id = "2" name="starrating" value = "2">
+            3: <input type="radio" id = "3" name="starrating" value = "3">
+            4: <input type="radio" id = "4" name="starrating" value = "4"> 
+            5: <input type="radio" id = "5" name="starrating" value = "5">
+            <br>
+            <br>
+            <br>
+            <input type="submit" name="submit" value="Submit">
+        </form>
+    </body>
+</html>
